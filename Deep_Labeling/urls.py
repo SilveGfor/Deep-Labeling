@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Frontend import views
+from Backend import views as view_back
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
+    path('', view_back.home),
     path('editor.html', views.editor)
 ]
 
