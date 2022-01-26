@@ -1,41 +1,67 @@
 <!Doctype html>
 <html lang = "en">
 <head>
-  <title>Python3 Code Editor</title>
+    <title>Python3 Code Editor</title>
     {% load static %}
-  <meta charset = "utf-8">
-  <style>
-    #area {
-      font-size: 14pt;
-      width: 1495px;
-      height: 744px;
-      }
-    .CodeMirror {
-      font-size: 14pt;
-      border: 1px solid black;
-      }
-    #submit {
-      width: 200px;
-      height: 50px;
-      font-size: 16pt;
-      }
-  </style>
+    <meta charset = "utf-8">
+    <style>
+        html, body{
+            height: 100%;
+            max-height: 100%;
+        }
+        .container{
+            margin-top: 40px;
+        }
+        #area {
+            font-size: 14pt;
+            width: 1495px;
+            height: 744px;
+        }
+        .CodeMirror {
+            font-size: 14pt;
+            border: 1px solid black;
+        }
+        #submit {
+            width: 200px;
+            height: 50px;
+            font-size: 16pt;
+        }
+        </style>
+    <link rel="stylesheet" href="{% static 'cssfiles/header.css' %}">
 </head>
 <body>
-  <h2>Python3 code editor</h2>
-  <form>
-      <label for="area"></label>
-      <textarea id = "area" name = "area">#Insert your code here</textarea>
-    <br>
-    <input type = "submit" value = "Submit" id = "submit" style = "visibility: hidden">
-  </form>
-  <script src = "{% static 'jsfiles/codemirror.js' %}"></script>
-  <link rel = "stylesheet" href = "{% static 'cssfiles/codemirror.css' %}">
-  <script src = "{% static 'jsfiles/python.js' %}"></script>
-  <script>
-    var code = CodeMirror.fromTextArea(area, {mode: "python"});
-    code.setSize(1500,750);
-    document.getElementById("submit").style.visibility = "visible";
-  </script>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="home">Home</a>
+                </li>
+                <li>
+                    <a href="editor">Editor</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h1>Python3 code editor</h1>
+                <form>
+                    <label for="area"></label>
+                    <textarea id = "area" name = "area">#Insert your code here</textarea>
+                    <br>
+                    <input type = "submit" value = "Submit" id = "submit" style = "visibility: hidden">
+                </form>
+                <script src = "{% static 'jsfiles/codemirror.js' %}"></script>
+                <link rel = "stylesheet" href = "{% static 'cssfiles/codemirror.css' %}">
+                <script src = "{% static 'jsfiles/python.js' %}"></script>
+                <script>
+                    var code = CodeMirror.fromTextArea(area, {mode: "python"});
+                    code.setSize(1500,750);
+                    document.getElementById("submit").style.visibility = "visible";
+                </script>
+            </div>{% static 'jsfiles/python.js' %}
+        </div>
+    </div>
 </body>
 </html>
