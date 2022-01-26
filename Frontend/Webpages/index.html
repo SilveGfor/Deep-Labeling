@@ -1,17 +1,46 @@
-<!DOCTYPE html>
+<!Doctype html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Main Page</title>
+    <link rel="stylesheet" href="{% static 'cssfiles/header.css' %}">
+    <style>
+        html, body{
+            height: 100%;
+            max-height: 100%;
+        }
+        .container{
+            margin-top:40px;
+        }
+    </style>
 </head>
 <body>
-    <h1>This is the home webpage of Deep Labeling project</h1>
-    <p><i>Some text about the goals of the project</i><p>
-    <br>
-    <p><i>Some text about the ways to use the project</i></p>
-    <br>
-    <p><i>Some text about the authors of the project</i></p>
-    <br>
-    <h3><a href = "editor.html">Start writing your rule</a></h3>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="home">Home</a>
+                </li>
+                <li>
+                    <a href="editor">Editor</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h1>This is the home webpage of Deep Labeling project</h1>
+                <p><i>Some text about the goals of the project</i><p>
+                <br>
+                <p><i>Some text about the ways to use the project</i></p>
+                <br>
+                <p><i>Some text about the authors of the project</i></p>
+                <br>
+                <h3><a href = "editor">Start writing your rule</a></h3>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
