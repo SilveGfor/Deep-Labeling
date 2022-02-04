@@ -16,28 +16,36 @@
             font-size: 14pt;
             width: 1495px;
             height: 744px;
-            margin-left: 40px;
+        }
+        .CodeMirror {
+            font-size: 14pt;
+            border: 1px solid black;<!Doctype html>
+<html lang = "en">
+<head>
+    <title>Rule Editor</title>
+    {% load static %}
+    <meta charset = "utf-8">
+    <style>
+        html, body{
+            height: 100%;
+            max-height: 100%;
+        }
+        .container{
+            margin-top: 40px;
+        }
+        #area {
+            font-size: 14pt;
+            width: 1495px;
+            height: 744px;
         }
         .CodeMirror {
             font-size: 14pt;
             border: 1px solid black;
-            margin-left: 40px;
         }
         #submit {
             width: 200px;
             height: 50px;
             font-size: 16pt;
-        }
-        span.func_head {
-            margin: 0;
-            display: inline-block;
-            font-size: 25px;
-        }
-        span.func_head_def {
-            color: #708;
-        }
-        span.func_head_name {
-            color: #00f;
         }
         </style>
     <link rel="stylesheet" href="{% static 'cssfiles/header.css' %}">
@@ -61,14 +69,54 @@
                 <h1>Rule editor</h1>
                 <p style="font-size: 25px">This is where you can write your python3 rule</p>
                 <form id="form" name="form">
-                    <div class="func_head" style="font-size: 20px">
-                        <span class="func_head func_head_def">def</span>
-                        <span class="func_head"> </span>
-                        <span class="func_head func_head_name">rule</span>
-                        <span class="func_head">(data, element, tags, nns):</span>
-                    </div>
                     <label for="area"></label>
-                    <textarea id = "area" name = "area">#Type your code here</textarea>
+                    <textarea id = "area" name = "area">def rule(task):</textarea>
+                    <br>
+                    <input type = "submit" value = "Submit" id = "submit" style = "visibility: hidden; margin-left: 40px">
+                </form>
+                <script src = "{% static 'jsfiles/codemirror.js' %}"></script>
+                <link rel = "stylesheet" href = "{% static 'cssfiles/codemirror.css' %}">
+                <script src = "{% static 'jsfiles/python.js' %}"></script>
+                <script>
+                    var code = CodeMirror.fromTextArea(area, {mode: "python"});
+                    code.setSize(1500,750);
+                    document.getElementById("submit").style.visibility = "visible";
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+        }
+        #submit {
+            width: 200px;
+            height: 50px;
+            font-size: 16pt;
+        }
+        </style>
+    <link rel="stylesheet" href="{% static 'cssfiles/header.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="home">Home</a>
+                </li>
+                <li>
+                    <a href="editor">Editor</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h1>Rule editor</h1>
+                <p style="font-size: 25px">This is where you can write your python3 rule</p>
+                <form id="form" name="form">
+                    <label for="area"></label>
+                    <textarea id = "area" name = "area">def rule(task):</textarea>
                     <br>
                     <input type = "submit" value = "Submit" id = "submit" style = "visibility: hidden; margin-left: 40px">
                 </form>
