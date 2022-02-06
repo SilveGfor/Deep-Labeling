@@ -1,0 +1,33 @@
+<div class="modal" id="modal">
+    <div claspy
+Add files via upload
+2 months ago
+modal.html s="modal-content" id="modal-content">
+        <span class="modal-close"id="modal-close">&times;</span>
+        <form>
+            <h3>Sign in</h3>
+            <p>Username</p>
+            <input type="text" id="username">
+            <p>Password</p>
+            <input type="password" id="password">
+            <br>
+            <button class="submit-button" type="submit" id="sign-in-submit">Sign in</button>
+        </form>
+    </div>
+    <script>
+        var modal = document.getElementById("modal");
+        var button = document.getElementById('modal-open');
+        var span = document.getElementById('modal-close');
+        button.onclick = function(){
+            modal.style.display='block';
+        }
+        span.onclick = function(){
+            modal.style.display='none';
+        }
+        window.onclick = function(event){
+            if (event.target == modal){
+                modal.style.display='none';
+            }
+        }
+    </script>
+</div>
