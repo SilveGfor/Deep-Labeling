@@ -25,7 +25,7 @@ urlpatterns = [
     path('index.html', views.home),
     path('home', views.home),
     path('editor.html', views.editor),
-    path('editor', views.editor)
+    path('editor', views.editor),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
