@@ -1,29 +1,65 @@
-<div class="modal" id="modal">
-    <div class="modal-content" id="modal-content">
-        <span class="modal-close"id="modal-close">&times;</span>
+<div class="modal" id="sign-in-modal">
+    <div class="modal-content">
+        <span class="modal-close"id="sign-in-modal-close">&times;</span>
         <form>
             <h3>Sign in</h3>
             <p>Username</p>
-            <input type="text" id="username">
+            <input type="text" id="sign-in-username">
             <p>Password</p>
-            <input type="password" id="password">
+            <input type="password" id="sign-in-password">
             <br>
             <button class="submit-button" type="submit" id="sign-in-submit">Sign in</button>
+            <br>
+            <button class="submit-button" type="button" id="sign-up-modal-open">Sign up</button>
         </form>
     </div>
     <script>
-        var modal = document.getElementById("modal");
-        var button = document.getElementById('modal-open');
-        var span = document.getElementById('modal-close');
-        button.onclick = function(){
-            modal.style.display='block';
+        var sign_in_modal = document.getElementById("sign-in-modal");
+        var sign_in_button = document.getElementById('sign-in-modal-open');
+        var span = document.getElementById('sign-in-modal-close');
+        sign_in_button.onclick = function(){
+            sign_in_modal.style.display='block';
         }
         span.onclick = function(){
-            modal.style.display='none';
+            sign_in_modal.style.display='none';
         }
         window.onclick = function(event){
-            if (event.target == modal){
-                modal.style.display='none';
+            if (event.target == sign_in_modal){
+                sign_in_modal.style.display='none';
+            }
+        }
+    </script>
+</div>
+<div class="modal" id="sign-up-modal">
+    <div class="modal-content">
+        <span class="modal-close"id="sign-up-modal-close">&times;</span>
+        <form>
+            <h3>Sign up</h3>
+            <p>Email</p>
+            <input type="email" id="email">
+            <p>Username</p>
+            <input type="text" id="sign-up-username">
+            <p>Password</p>
+            <input type="password" id="sign-up-password">
+            <br>
+            <button class="submit-button" type="submit" id="sign-up-submit">Sign up</button>
+        </form>
+    </div>
+    <script>
+        var sign_up_modal = document.getElementById("sign-up-modal");
+        var sign_up_button = document.getElementById('sign-up-modal-open');
+        var span = document.getElementById('sign-up-modal-close');
+        var sign_in_modal = document.getElementById("sign-in-modal");
+        sign_up_button.onclick = function(){
+            sign_up_modal.style.display='block';
+            sign_in_modal.style.display='none';
+        }
+        span.onclick = function(){
+            sign_up_modal.style.display='none';
+        }
+        window.onclick = function(event){
+            if (event.target == sign_up_modal){
+                sign_up_modal.style.display='none';
             }
         }
     </script>
