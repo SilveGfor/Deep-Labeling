@@ -7,3 +7,7 @@ def home(request):
 
 def editor(request):
     return render(request, 'editor.html')
+
+
+def projects(request):
+    return render(request, 'projects.html')
