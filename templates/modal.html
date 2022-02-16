@@ -1,31 +1,80 @@
 <div class="modal" id="sign-in-modal">
+    {% load static %}
     <div class="modal-content">
         <span class="modal-close"id="sign-in-modal-close">&times;</span>
-        <form>
+        <form id="sign-in-form" name="sign-in-form">
             <h3>Sign in</h3>
             <p>Username</p>
-            <input type="text" id="sign-in-username">
+            <input type="text" id="sign-in-username" name="username">
             <p>Password</p>
-            <input type="password" id="sign-in-password">
+            <input type="password" id="sign-in-password" name="password">
             <br>
-            <button class="submit-button" type="submit" id="sign-in-submit">Sign in</button>
+            <button class="submit-button" type="button" id="sign-in-submit" onclick="Sign_in_request()">Sign in</button>
             <br>
             <button class="submit-button" type="button" id="sign-up-modal-open">Sign up</button>
+            <div id="resultDivContainer"></div>
         </form>
     </div>
-    <script>
+    <script type="text/javascript" src="{% static "jsfiles/http_ajax.googleapis.com_ajax_libs_jquery_1.7.2_jquery.js" %}"></script>
+    <script type="text/javascript">
         var sign_in_modal = document.getElementById("sign-in-modal");
+
+        document.getElementById("projects-page").style.visibility = 'hidden';
+
+        var sign_in_data = new FormData();
+        Sign_in_request = function() {
+            const url = "/post/authorization/";
+            var sign_in_username = document.querySelector("#sign-in-username");
+            var sign_in_password = document.querySelector("#sign-in-password");
+
+            var sign_in_username_value = sign_in_username.value;
+            var sign_in_password_value = sign_in_password.value;
+
+            console.log(JSON.stringify({
+                "email" : sign_in_username_value,
+                    "password" : sign_in_password_value
+            }));
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: JSON.stringify({
+                    "email" : sign_in_username_value,
+                    "password" : sign_in_password_value
+                    }),
+                dataType: "json",
+                processData: false,
+                success: function (result) {
+                    switch (result.status) {
+                        case "success":
+                            document.getElementById("projects-page").style.visibility = 'visible';
+                            sign_in_modal.style.display = 'none';
+                            break;
+                        default:
+
+                            break;
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        }
+
+
+
         var sign_in_button = document.getElementById('sign-in-modal-open');
         var span = document.getElementById('sign-in-modal-close');
-        sign_in_button.onclick = function(){
-            sign_in_modal.style.display='block';
+        sign_in_button.onclick = function () {
+            sign_in_modal.style.display = 'block';
         }
-        span.onclick = function(){
-            sign_in_modal.style.display='none';
+        span.onclick = function () {
+            sign_in_modal.style.display = 'none';
         }
-        window.onclick = function(event){
-            if (event.target == sign_in_modal){
-                sign_in_modal.style.display='none';
+        window.onclick = function (event) {
+            if (event.target == sign_in_modal) {
+                sign_in_modal.style.display = 'none';
             }
         }
     </script>
@@ -33,7 +82,7 @@
 <div class="modal" id="sign-up-modal">
     <div class="modal-content">
         <span class="modal-close"id="sign-up-modal-close">&times;</span>
-        <form>
+        <form id="sign-up-form">
             <h3>Sign up</h3>
             <p>Email</p>
             <input type="email" id="email">
